@@ -6,7 +6,6 @@ import { Cart } from "./components/cart/Cart";
 import { OrderModal } from "./components/modal/OrderModal";
 
 function App() {
-  const [data, setData] = useState(dessertData);
   const [cart, setCart] = useState<DessertType[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,25 +32,24 @@ function App() {
 
   return (
     <>
-      <div className="container mx-auto p-5 pb-10">
-        <h1 className="text-[40px] font-bold mb-5">Desserts</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
-          {data.map((dessert) => (
-            <DessertCard
-              key={dessert.name}
-              cart={cart}
-              name={dessert.name}
-              category={dessert.category}
-              price={dessert.price}
-              image={dessert.image.mobile}
-              addToCart={() => handleAddToCart(dessert)}
-              removeFromCart={() => handleRemoveFromCart(dessert.name)}
-            />
-          ))}
+      <div className="container mx-auto flex flex-col lg:flex-row lg:gap-5 p-5 pb-10">
+        <div>
+          <h1 className="text-[40px] font-bold mb-5">Desserts</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-6">
+            {dessertData.map((dessert) => (
+              <DessertCard
+                key={dessert.name}
+                data={dessert}
+                cart={cart}
+                addToCart={() => handleAddToCart(dessert)}
+                removeFromCart={() => handleRemoveFromCart(dessert.name)}
+              />
+            ))}
+          </div>
         </div>
         <Cart
           cart={cart}
-          removeFromCart={() => handleRemoveFromCart}
+          removeFromCart={handleRemoveFromCart}
           confirmOrder={() => confirmOrder()}
         />
       </div>

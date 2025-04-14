@@ -5,15 +5,13 @@ export interface DessertType {
   image: {
     mobile: string;
     tablet: string;
+    desktop: string;
   };
 }
 
 export interface DessertCardType {
-  name: string;
+  data: DessertType;
   cart: DessertType[];
-  category: string;
-  price: number;
-  image: string;
   addToCart: () => void;
   removeFromCart: () => void;
 }
