@@ -15,7 +15,13 @@ export const DessertCard = ({
   const count = cart.filter((item) => item.name === name).length;
   return (
     <div className="flex flex-col relative">
-      <img src={image} alt="image" className="mb-8" />
+      <img
+        src={image}
+        alt="image"
+        className={`mb-8 ${
+          count > 0 ? "border-2 border-red-700" : ""
+        } rounded-md`}
+      />
       <p className="text-sm text-gray-400">{category}</p>
       <p>{name}</p>
       <p className="text-red-700 font-semibold">${price.toFixed(2)}</p>
