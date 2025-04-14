@@ -14,4 +14,5 @@ export interface DessertCardType {
   price: number;
   image: string;
   addToCart: () => void;
+  removeFromCart: () => void;
 }
