@@ -6,9 +6,11 @@ import carbonNeutralIcon from "/images/icon-carbon-neutral.svg";
 export const Cart = ({
   cart,
   removeFromCart,
+  confirmOrder,
 }: {
   cart: DessertType[];
   removeFromCart: (name: string) => void;
+  confirmOrder: () => void;
 }) => {
   const listOfUniqueDesserts = [...new Set(cart.map((item) => item.name))];
 
@@ -20,7 +22,6 @@ export const Cart = ({
     return cart.filter((item) => item.name === name)[0].price;
   };
 
-  console.log(listOfUniqueDesserts);
   return (
     <div className="flex flex-col px-6">
       <h1 className="text-2xl font-bold text-red-700 mb-10">
@@ -87,6 +88,7 @@ export const Cart = ({
             </div>
             <button
               type="button"
+              onClick={confirmOrder}
               className="w-full py-3 bg-red-700 text-white rounded-full font-semibold"
             >
               Confirm Order

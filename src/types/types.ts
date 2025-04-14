@@ -4,6 +4,7 @@ export interface DessertType {
   price: number;
   image: {
     mobile: string;
+    tablet: string;
   };
 }
 
